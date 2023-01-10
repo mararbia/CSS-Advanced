@@ -1,0 +1,113 @@
+// Variáveis
+// @text-color: red;
+// @text-color2: blue;
+
+// body{
+    //     color: @text-color;
+    // }
+    
+    // p{
+        //     color: @text-color;
+        //     b{
+            //         color: @text-color2;
+            //     }
+            // }
+            
+
+// }
+
+// Exemplo de uma condicional e porcentagem
+// @text-color: blue;
+// @width: 0.25;
+// p{
+//     color: if(iscolor(@text-color), @text-color, red);
+//     width: percentage(@width);
+// }
+
+// Mixins
+// @text-color: blue;
+// @light-color: lightgrey;
+
+// body{
+//     .colors();
+// }
+
+// h1{
+//     .colors();
+//     text-shadow: 2px 1px 1px #7a7b7c;
+//     font-size: 50px;
+// }
+
+// p{
+//     .colors();
+// }
+
+// .colors(){
+//     color: @text-color;
+//     background-color: @light-color*0.9;
+//     .fonts();
+// }
+
+// .fonts(){
+//     font-size: 23px;
+// }
+
+
+// Passagem de parâmetro
+// @text-color: blue;
+// @light-color: lightgrey;
+
+// body{
+//     .colors();
+// }
+
+// h1{
+//     .colors();
+//     text-shadow: 2px 1px 1px #7a7b7c;
+//     .fonts(50px);
+// }
+
+// p{
+//     .colors();
+// }
+
+// .colors(){
+//     color: @text-color;
+//     background-color: @light-color*0.9;
+//     .fonts(23px);
+// }
+
+// .fonts(@size){
+//     font-size: @size;
+// }
+
+//Condicionais If
+
+@text-color: blue;
+@light-color: lightgrey;
+@size: 20px;
+
+body{
+    background-color: @light-color;
+}
+
+h1{
+    .colors('h1');
+}
+
+p{
+    .colors('p');
+}
+
+.colors(@tag){
+    color: @text-color * 0.6;
+    font-size: @size;
+    & when (@tag = 'h1'){
+        text-shadow: 2px 1px 1px #7a7b7c;
+        font-size: @size + 27px;
+    } 
+    & when (@tag = 'p'){
+        background-color: lightgreen;
+        font-size: @size * 1.23;
+    } 
+}
